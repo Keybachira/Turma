@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constituição da República de Angola</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .section-highlight {
+            transition: all 0.3s ease;
+        }
+        .section-highlight:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .active-section {
+            border-left: 4px solid #e53e3e;
+            background-color: rgba(229, 62, 62, 0.05);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-red-600 to-red-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img src=""alhttps://images.app.goo.gl/sTEWPQxXpEkUS9iw7t="Bandeira de Angola" class="h-12 mr-4">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold">Constituição da República de Angola</h1>
+                        <p class="text-sm md:text-base opacity-90">Lei Suprema - Aprovada em 27 de Janeiro de 2010</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+                        <i class="fas fa-moon text-white"></i>
+                    </button>
+                    <button id="search-btn" class="p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+                        <i class="fas fa-search text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl fade-in">
+            <div class="relative">
+                <input type="text" id="search-input" placeholder="Pesquisar na Constituição..." 
+                       class="w-full p-4 pr-12 text-lg border-0 rounded-t-lg focus:ring-2 focus:ring-red-500">
+                <button id="close-search" class="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="search-results" class="max-h-96 overflow-y-auto p-2 border-t">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 flex flex-col lg:flex-row">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full lg:w-1/4 mb-8 lg:mb-0 lg:pr-8">
+            <div class="bg-white rounded-lg shadow-md p-4 sticky top-4 overflow-y-auto max-h-screen scrollbar-hide">
+                <h2 class="text-xl font-bold mb-4 text-red-700 border-b pb-2">Índice</h2>
+                <nav>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#contexto-historico" class="nav-link flex items-center p-2 rounded hover:bg-red-50 transition">
+                                <i class="fas fa-landmark mr-3 text-red-600"></i>
+                                <span>1. Contexto Histórico</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#estrutura" class="nav-link flex items-center p-2 rounded hover:bg-red-50 transition">
+                                <i class="fas fa-sitemap mr-3 text-red-600"></i>
+                                <span>2. Estrutura da Constituição</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#direitos-humanos" class="nav-link flex items-center p-2 rounded hover:bg-red-50 transition">
+                                <i class="fas fa-hand-holding-heart mr-3 text-red-600"></i>
+                                <span>3. Direitos Humanos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mudancas" class="nav-link flex items-center p-2 rounded hover:bg-red-50 transition">
+                                <i class="fas fa-exchange-alt mr-3 text-red-600"></i>
+                                <span>4. Principais Mudanças</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#criticas" class="nav-link flex items-center p-2 rounded hover:bg-red-50 transition">
+                                <i class="fas fa-comment-alt mr-3 text-red-600"></i>
+                                <span>5. Críticas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contexto-atual" class="nav-link flex items-center p-2 rounded hover:bg-red-50 transition">
+                                <i class="fas fa-chart-line mr-3 text-red-600"></i>
+                                <span>6. Contexto Atual</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#direitos-mulheres" class="nav-link flex items-center p-2 rounded hover:bg-red-50 transition">
+                                <i class="fas fa-female mr-3 text-red-600"></i>
+                                <span>7. Direitos Humanos e Mulheres</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#conclusao" class="nav-link flex items-center p-2 rounded hover:bg-red-50 transition">
+                                <i class="fas fa-book mr-3 text-red-600"></i>
+                                <span>8. Conclusão</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="mt-8">
+                    <h3 class="font-semibold mb-2 text-red-700">Links Rápidos</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="flex items-center text-sm p-2 rounded hover:bg-red-50 transition">
+                            <i class="fas fa-file-pdf mr-2 text-red-600"></i>
+                            <span>PDF da Constituição</span>
+                        </a>
+                        <a href="#" class="flex items-center text-sm p-2 rounded hover:bg-red-50 transition">
+                            <i class="fas fa-landmark mr-2 text-red-600"></i>
+                            <span>Assembleia Nacional</span>
+                        </a>
+                        <a href="#" class="flex items-center text-sm p-2 rounded hover:bg-red-50 transition">
+                            <i class="fas fa-balance-scale mr-2 text-red-600"></i>
+                            <span>Tribunal Constitucional</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-full lg:w-3/4">
+            <!-- Introduction -->
+            <section class="bg-white rounded-lg shadow-md p-6 mb-8 section-highlight">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-star text-red-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">Introdução</h2>
+                </div>
+                <p class="text-gray-700 leading-relaxed">
+                    A Constituição da República de Angola é a lei suprema do país, que define os princípios fundamentais do Estado, os direitos e deveres dos cidadãos, a organização política e administrativa, além de estabelecer as bases para o funcionamento do governo e da sociedade angolana. A atual Constituição foi aprovada em 27 de janeiro de 2010 pela Assembleia Nacional, marcando a transição para a Terceira República de Angola.
+                </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Lei Suprema</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">2010</span>
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Direitos Humanos</span>
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Estado Democrático</span>
+                </div>
+            </section>
+
+            <!-- Content Sections -->
+            <section id="contexto-historico" class="bg-white rounded-lg shadow-md p-6 mb-8 section-highlight">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-landmark text-red-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">1. Contexto Histórico</h2>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Angola teve três constituições desde sua independência de Portugal em 11 de novembro de 1975:
+                </p>
+                
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-red-700 mb-2">Primeira Constituição (1975)</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Aprovada pelo Comitê Central do Movimento Popular de Libertação de Angola (MPLA)</li>
+                        <li>Inspirada em princípios marxistas-leninistas</li>
+                        <li>Estabelecia um Estado de partido único</li>
+                        <li>Centralizava o poder político</li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-red-700 mb-2">Segunda Constituição (1992)</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Promulgada após o Acordo de Paz para Angola</li>
+                        <li>Introduziu o conceito de Estado Democrático de Direito</li>
+                        <li>Aboliu o papel de vanguarda do MPLA</li>
+                        <li>Reconheceu o pluralismo político e a propriedade privada</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-red-700 mb-2">Constituição de 2010</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Aprovada após as eleições legislativas de 2008</li>
+                        <li>Resultado de um mandato conferido pelos deputados eleitos</li>
+                        <li>Reflete a história de luta angolana contra a colonização portuguesa</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="estrutura" class="bg-white rounded-lg shadow-md p-6 mb-8 section-highlight">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-sitemap text-red-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">2. Estrutura da Constituição de 2010</h2>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    A Constituição da República de Angola de 2010 é composta por 244 artigos, divididos em seis títulos principais, além de disposições transitórias e finais.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Preâmbulo</h3>
+                        <p class="text-gray-700 text-sm">
+                            Enfatiza a luta do povo angolano pela independência, a soberania e a construção de uma sociedade justa.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Título I – Princípios Fundamentais</h3>
+                        <p class="text-gray-700 text-sm">
+                            Define Angola como uma república soberana, independente, baseada na dignidade humana.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Título II – Direitos, Liberdades e Garantias</h3>
+                        <p class="text-gray-700 text-sm">
+                            Garante direitos civis, políticos, econômicos, sociais e culturais.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Título III – Organização Econômica</h3>
+                        <p class="text-gray-700 text-sm">
+                            Define a economia mista, com coexistência de propriedade pública e privada.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Título IV – Organização do Poder Político</h3>
+                        <p class="text-gray-700 text-sm">
+                            Estabelece o presidencialismo como regime político.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Título V – Administração Pública</h3>
+                        <p class="text-gray-700 text-sm">
+                            Define as províncias, municípios e comunas como divisões administrativas.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="direitos-humanos" class="bg-white rounded-lg shadow-md p-6 mb-8 section-highlight">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-hand-holding-heart text-red-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">3. Direitos Humanos na Constituição</h2>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    A Constituição de 2010 incorpora uma ampla gama de direitos humanos, refletindo compromissos internacionais de Angola.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div class="border-l-4 border-red-500 pl-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">Direitos Civis e Políticos</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700 text-sm">
+                            <li>Liberdade de expressão, associação, reunião e manifestação</li>
+                            <li>Direito ao voto e participação política</li>
+                            <li>Proibição de discriminação</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="border-l-4 border-blue-500 pl-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">Direitos Econômicos, Sociais e Culturais</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700 text-sm">
+                            <li>Acesso à educação, saúde, moradia e trabalho digno</li>
+                            <li>Proteção à infância, maternidade e idosos</li>
+                            <li>Direito a um meio ambiente saudável</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-blue-700 mb-2">Direitos Coletivos</h3>
+                    <p class="text-gray-700 text-sm">
+                        Reconhecimento da diversidade cultural e étnica, com proteção às comunidades tradicionais, como os povos Bantu e Khoisan. Direito à autodeterminação e desenvolvimento sustentável.
+                    </p>
+                </div>
+            </section>
+
+            <section id="mudancas" class="bg-white rounded-lg shadow-md p-6 mb-8 section-highlight">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-exchange-alt text-red-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">4. Principais Mudanças da Constituição de 2010</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Abolição das Eleições Presidenciais Diretas</h3>
+                        <p class="text-gray-700 text-sm">
+                            O Presidente da República é o cabeça da lista do partido ou coligação com maioria nas eleições legislativas, consolidando o poder do MPLA.
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Fortalecimento do Presidencialismo</h3>
+                        <p class="text-gray-700 text-sm">
+                            O Presidente nomeia juízes do Tribunal Constitucional, Supremo Tribunal e Tribunal de Contas, além de governadores provinciais e outros cargos-chave.
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Manutenção de Símbolos Nacionais</h3>
+                        <p class="text-gray-700 text-sm">
+                            A Constituição mantém a bandeira nacional, semelhante à usada pelo MPLA durante a guerra civil, o que gerou críticas.
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Consolidação do Estado Democrático de Direito</h3>
+                        <p class="text-gray-700 text-sm">
+                            Apesar das críticas, a Constituição reforça o pluralismo político, a economia mista e a proteção dos direitos humanos.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="criticas" class="bg-white rounded-lg shadow-md p-6 mb-8 section-highlight">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-comment-alt text-red-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">5. Críticas à Constituição de 2010</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="p-4 bg-red-50 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Concentração de Poder</h3>
+                        <p class="text-gray-700">
+                            A abolição das eleições presidenciais diretas e o fortalecimento do Executivo são vistos como um retrocesso democrático. A UNITA chamou a Constituição de "fraude completa" e disse que ela "enterra a democracia" ao conceder "poder executivo excessivo" ao Presidente.
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 bg-red-50 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Símbolos Nacionais</h3>
+                        <p class="text-gray-700">
+                            A manutenção da bandeira associada ao MPLA é criticada por não representar a pluralidade do país.
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 bg-red-50 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Falta de Debate Público</h3>
+                        <p class="text-gray-700">
+                            A aprovação da Constituição em janeiro de 2010, coincidindo com a Copa Africana de Nações, foi vista como uma estratégia para evitar amplo debate público.
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 bg-red-50 rounded-lg">
+                        <h3 class="font-semibold text-red-700 mb-2">Desafios de Implementação</h3>
+                        <p class="text-gray-700">
+                            Apesar de garantir direitos econômicos e sociais, Angola enfrenta altas taxas de pobreza (41% da população vive abaixo da linha de pobreza, Banco Mundial, 2023) e desigualdade (Gini 0,513), dificultando a efetivação desses direitos.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contexto-atual" class="bg-white rounded-lg shadow-md p-6 mb-8 section-highlight">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-chart-line text-red-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">6. Contexto Atual e Impactos</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-semibold text-red-700 mb-2">Sistema Político</h3>
+                        <p class="text-gray-700 text-sm">
+                            Desde 2010, o MPLA mantém o controle do governo, com João Lourenço como Presidente desde 2017, sucedendo José Eduardo dos Santos (1979-2017).
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-semibold text-red-700 mb-2">Eleições</h3>
+                        <p class="text-gray-700 text-sm">
+                            A Constituição estabelece eleições legislativas a cada cinco anos. As últimas ocorreram em 2022, com o MPLA vencendo novamente.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-semibold text-red-700 mb-2">Economia e Direitos Sociais</h3>
+                        <p class="text-gray-700 text-sm">
+                            A Constituição prioriza a exploração sustentável de recursos como petróleo e diamantes, mas a dependência econômica do petróleo (70% do PIB) limita o progresso social.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-semibold text-red-700 mb-2">Tribunal Constitucional</h3>
+                        <p class="text-gray-700 text-sm">
+                            Criado em 2008 e consolidado pela Constituição de 2010, o Tribunal Constitucional desempenha um papel central na interpretação da lei.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="direitos-mulheres" class="bg-white rounded-lg shadow-md p-6 mb-8 section-highlight">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-female text-red-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">7. Direitos Humanos e Mulheres na Constituição</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="p-4 bg-pink-50 rounded-lg">
+                        <h3 class="font-semibold text-pink-700 mb-2">Igualdade de Gênero</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                            <li>Proíbe discriminação com base no gênero (Artigo 23.º)</li>
+                            <li>Promove a igualdade de oportunidades</li>
+                            <li>Garante direitos reprodutivos e proteção à maternidade</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600">
+                            Apesar disso, a representação feminina no Parlamento é de cerca de 30% (2023), e a violência de gênero permanece um desafio.
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 bg-purple-50 rounded-lg">
+                        <h3 class="font-semibold text-purple-700 mb-2">Direitos das Minorias</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                            <li>Reconhece a diversidade étnica e cultural</li>
+                            <li>Protege grupos como os Khoisan e Bantu</li>
+                            <li>Mantém Cabinda como parte integrante de Angola</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="conclusao" class="bg-white rounded-lg shadow-md p-6 mb-8 section-highlight">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-book text-red-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">8. Conclusão</h2>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    A Constituição da República de Angola de 2010 é um marco na consolidação do Estado angolano, refletindo a história de luta pela independência e a busca por uma sociedade democrática e justa. Ela estabelece um sistema presidencialista robusto, protege uma ampla gama de direitos humanos e promove a unidade nacional.
+                </p>
+                
+                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                    <p class="text-gray-700">
+                        No entanto, críticas sobre a concentração de poder, a falta de eleições presidenciais diretas e os desafios na implementação de direitos econômicos e sociais destacam a necessidade de reformas para fortalecer a democracia e a inclusão.
+                    </p>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mt-4">
+                    A Constituição continua a moldar o desenvolvimento político e social de Angola, mas sua eficácia depende de esforços para superar desigualdades e garantir maior participação popular.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Constituição da República de Angola</h3>
+                    <p class="text-gray-400 text-sm">
+                        Lei Suprema do país, aprovada em 27 de Janeiro de 2010 pela Assembleia Nacional.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Links Úteis</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Assembleia Nacional</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Tribunal Constitucional</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Governo de Angola</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contato</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Luanda, Angola</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>info@constituicao.gov.ao</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">
+                <p>© 2023 Constituição da República de Angola. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const moonIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            
+            if (document.body.classList.contains('dark')) {
+                document.body.classList.add('bg-gray-900');
+                document.body.classList.remove('bg-gray-50');
+                moonIcon.classList.remove('fa-moon');
+                moonIcon.classList.add('fa-sun');
+            } else {
+                document.body.classList.remove('bg-gray-900');
+                document.body.classList.add('bg-gray-50');
+                moonIcon.classList.remove('fa-sun');
+                moonIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Search functionality
+        const searchBtn = document.getElementById('search-btn');
+        const searchModal = document.getElementById('search-modal');
+        const closeSearch = document.getElementById('close-search');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        
+        searchBtn.addEventListener('click', () => {
+            searchModal.classList.remove('hidden');
+            searchModal.classList.add('flex');
+            searchInput.focus();
+        });
+        
+        closeSearch.addEventListener('click', () => {
+            searchModal.classList.add('hidden');
+            searchModal.classList.remove('flex');
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+        });
+        
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            if (query.length < 2) {
+                searchResults.innerHTML = '';
+                return;
+            }
+            
+            // In a real implementation, you would search through the actual content
+            // This is just a mockup
+            searchResults.innerHTML = `
+                <div class="p-3 hover:bg-gray-100 cursor-pointer">
+                    <div class="font-medium">Contexto Histórico</div>
+                    <div class="text-sm text-gray-600">Primeira Constituição (1975), Segunda Constituição (1992), Constituição de 2010</div>
+                </div>
+                <div class="p-3 hover:bg-gray-100 cursor-pointer">
+                    <div class="font-medium">Direitos Humanos</div>
+                    <div class="text-sm text-gray-600">Direitos Civis e Políticos, Direitos Econômicos, Sociais e Culturais</div>
+                </div>
+                <div class="p-3 hover:bg-gray-100 cursor-pointer">
+                    <div class="font-medium">Críticas</div>
+                    <div class="text-sm text-gray-600">Concentração de Poder, Símbolos Nacionais, Falta de Debate Público</div>
+                </div>
+            `;
+        });
+
+        // Highlight active section in sidebar
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-section');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-section');
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
